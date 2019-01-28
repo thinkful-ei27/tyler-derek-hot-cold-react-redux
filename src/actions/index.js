@@ -1,5 +1,3 @@
-'use strict';
-
 export const RESTART_GAME = 'RESTART_GAME';
 export const restartGame = () => {
   return {

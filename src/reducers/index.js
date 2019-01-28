@@ -7,7 +7,7 @@ const initialState = {
   correctAnswer: Math.floor(Math.random() * 100) + 1
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer (state = initialState, action) {
   switch (action.type) {
     case RESTART_GAME:
     case MAKE_GUESS:
