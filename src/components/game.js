@@ -53,16 +53,13 @@ import InfoSection from './info-section';
 
 
   render() {
-    const { feedback, guesses, auralStatus } = this.state;
-    const guessCount = guesses.length;
+    const { guesses, auralStatus } = this.state;
 
     return (
       <div>
         <Header/>
         <main role="main">
           <GuessSection
-            feedback={feedback}
-            guessCount={guessCount}
             onMakeGuess={guess => this.makeGuess(guess)}
           />
           <StatusSection guesses={guesses} 

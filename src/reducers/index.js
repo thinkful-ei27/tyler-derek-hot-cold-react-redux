@@ -10,7 +10,9 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case RESTART_GAME:
-      return Object.assign({}, initialState);
+      return Object.assign({}, initialState, {
+        correctAnswer: Math.floor(Math.random() * 100) + 1
+      });
     case MAKE_GUESS:
       const guess = parseInt(action.guess, 10);
       if (isNaN(guess)) {
