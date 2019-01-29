@@ -16,42 +16,6 @@ import InfoSection from './info-section';
     };
   }
 
-
-  makeGuess(guess) {
-    guess = parseInt(guess, 10);
-    if (isNaN(guess)) {
-      this.setState({ feedback: 'Please enter a valid number' });
-      return;
-    }
-
-    const difference = Math.abs(guess - this.state.correctAnswer);
-
-    let feedback;
-    if (difference >= 50) {
-      feedback = 'You\'re Ice Cold...';
-    } else if (difference >= 30) {
-      feedback = 'You\'re Cold...';
-    } else if (difference >= 10) {
-      feedback = 'You\'re Warm.';
-    } else if (difference >= 1) {
-      feedback = 'You\'re Hot!';
-    } else {
-      feedback = 'You got it!';
-    }
-
-    this.setState({
-      feedback,
-      guesses: [...this.state.guesses, guess]
-    });
-
-    // We typically wouldn't touch the DOM directly like this in React
-    // but this is the best way to update the title of the page,
-    // which is good for giving screen-reader users
-    // instant information about the app.
-    document.title = feedback ? `${feedback} | Hot or Cold` : 'Hot or Cold';
-  }
-
-
   render() {
     const { guesses, auralStatus } = this.state;
 
@@ -59,9 +23,7 @@ import InfoSection from './info-section';
       <div>
         <Header/>
         <main role="main">
-          <GuessSection
-            onMakeGuess={guess => this.makeGuess(guess)}
-          />
+          <GuessSection />
           <StatusSection guesses={guesses} 
             auralStatus={auralStatus}
           />
